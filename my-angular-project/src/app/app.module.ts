@@ -16,7 +16,6 @@ import { DetailsComponent } from './details/details.component';
     CatalogComponent,
     EditComponent,
     DetailsComponent
-
   ],
 
   imports: [
