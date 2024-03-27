@@ -1,0 +1,23 @@
+main {
+    color: rgb(13, 144, 232);
+    /* 232, 60, 13 */
+    text-align: center;
+    padding-top: 150px;
+}
+
+.errorContainer {
+    position: fixed;
+    top: 90px;
+    right: 80px;
+    width: 380px;
+    min-width: 100px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.errorContainer > p {
+    background: rgb(0, 122, 204);
+    font-size: 25px;
+    padding: 20px;
+    border-radius: 25px;
+}

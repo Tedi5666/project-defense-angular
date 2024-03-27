@@ -1,0 +1,217 @@
+.details-page {
+    padding-top: 60px;
+}
+
+.details-page > h1 {
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    margin-top: -1em;
+    margin-bottom: 0.1em;
+    padding: 5px;
+}
+
+.details-card {
+    display: flex;
+    width: 680px;
+    min-height: 400px;
+    height: auto;
+    background-color: #322cd1;
+    margin-bottom: 1.5em;
+    border-radius: 30px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #00000070;
+}
+
+.details-card-image {
+    position: relative;
+}
+
+.details-card-image > img {
+    width: 260px;
+    height: 360px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+}
+
+.details-card-text {
+    width: 400px;
+    position: relative;
+    height: auto;
+}
+
+.detail-card-text-content {
+    position: relative;
+    width: 250px;
+    height: auto;
+    text-align: center;
+    margin-left: 15px;
+    padding-left: 10px;
+    box-shadow: 0px 0px 20px 0px black;
+}
+
+.details-card-text > h2 {
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.details-card-text>h3 {
+    font-size: 16px;
+    line-height: 2em;
+    word-wrap: break-word;
+    padding-left: 10px;
+    margin-top: 0.2em;
+    color: black;
+}
+
+.details-btn:hover {
+    box-shadow: none;
+    background-image: linear-gradient(to left, violet, rgb(41, 151, 151));
+}
+
+.buttons {
+    margin-top: 10%;
+    position: relative;
+    text-align: center;
+    bottom: 2%;
+}
+
+.buttons>.wish-pub {
+    color: #fff;
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    width: 250px;
+    margin-left: 5em;
+    margin-top: 1.3em;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-wish {
+    color: #fff;
+    text-decoration: none;
+    padding: 9px;
+    margin-top: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-color: lightcoral;
+    border-style: outset;
+    border-width: 4px;
+}
+
+.btn-edit {
+    background-color: #469980;
+}
+
+.btn-edit:hover {
+    background-color: #387183;
+}
+
+.btn-delete {
+    background-color: #f15505;
+}
+
+.btn-delete:hover {
+    background-color: #da4c06;
+}
+
+.btn-wish {
+    background-color: #595c61;
+}
+
+.btn-wish:hover {
+    background-color: #4b4d50;
+}
+
+.bidForm-container {
+    display: flex;
+    position: absolute;
+    right: 50%;
+    margin-right: -300px;
+    align-items: center;
+    width: 600px;
+    height: 30px;
+    padding: 10px 0;
+    background-color: rgba(228, 163, 120, 0.87);
+}
+
+.bidForm-container form {
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+#bidItem-input {
+    height: 25px;
+    width: 450px;
+    background: none;
+}
+
+.bidForm-container button {
+    right: 30px;
+    color: #0285fff8;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    background-color: inherit;
+}
+
+.bidForm-container button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #4b4d50;
+}
+
+/* .bidForm-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.bidForm-container button {
+    position: absolute;
+    right: 30px;
+    color: #1d92ffcb;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+#bidItem-textarea {
+    position: absolute;
+    left: 30px;
+    width: 85%;
+    resize: none;
+    overflow: hidden;
+    height: 20px;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: #262626;
+    background: none;
+}
+
+textarea.text::placeholder {
+    color: #777;
+}
+
+.bidForm-container form label {
+    display: none;
+}
+
+.bidForm-container form {
+    display: flex;
+    margin-bottom: 15px;
+} */

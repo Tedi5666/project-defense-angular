@@ -1,0 +1,97 @@
+.forms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.forms.active {
+    right: 0;
+}
+
+.forms form {
+    background: #ffffffc0;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    width: 40rem;
+    padding: 2rem;
+    box-shadow: 0 0 10px #00000070;
+    border-radius: 0.5rem;
+    margin-bottom: 10rem;
+}
+
+.forms form h3 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #444;
+    text-align: center;
+}
+
+.forms form label {
+    display: block;
+    color: rgba(42, 72, 104, 0.87);
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+.forms form .box {
+    width: 80%;
+    background: #ffffff42;
+    margin: 0.7rem 0;
+    font-size: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.32);
+    border-radius: 0.5rem;
+    padding: 1rem 1.2rem;
+    color: #444444;
+    text-transform: none;
+}
+
+.forms form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+.forms form .checkbox label {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.forms form .btn {
+    text-align: center;
+    width: 80%;
+    height: 45px;
+    margin: 1.5rem 0;
+    font-size: 25px;
+    background-color: rgb(105, 237, 247);
+    outline: none;
+}
+
+.forms form .btn:hover {
+    box-shadow: 5px 6px 4px 2px rgb(100, 236, 105);
+}
+
+.forms form p {
+    padding-top: 0.8rem;
+    color: #6b6b6b;
+    font-size: 1.5rem;
+}
+
+.forms form p a {
+    color: #276aae;
+    text-decoration: none;
+}
+
+.forms form p a:hover {
+    text-decoration: underline;
+}
+
+.forms #close-login-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-size: 5rem;
+    color: #444;
+    cursor: pointer;
+}

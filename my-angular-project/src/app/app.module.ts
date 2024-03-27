@@ -5,24 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { EditComponent } from './edit/edit.component';
-import { DetailsComponent } from './details/details.component';
+import { CatalogComponent } from './giveAway/catalog/catalog.component';
+// !
+import { EditComponent } from './giveAway/edit/edit.component';
+import { DetailsComponent } from './giveAway/details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    CatalogComponent,
-    EditComponent,
-    DetailsComponent
+    CatalogComponent
   ],
-
+// !
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
-
+    CoreModule,
+    CatalogComponent,
+    EditComponent,
+    DetailsComponent
   ],
   providers: [],
 
