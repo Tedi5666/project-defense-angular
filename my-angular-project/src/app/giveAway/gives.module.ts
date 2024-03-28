@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
-// import { GivesRoutingModule } from './gives.routing.module';
+import { GivesRoutingModule } from './gives.routing.module';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -19,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    // GivesRoutingModule,
+    GivesRoutingModule,
     FormsModule,
     SharedModule,
   ],

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { EmailValidatorDirective } from './validators/email-validator.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    EmailValidatorDirective
+  ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [EmailValidatorDirective]
 })
 export class SharedModule { }

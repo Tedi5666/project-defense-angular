@@ -1,12 +1,58 @@
 <section class="forms">
-
-    <form method="post">
-        <h3>Login</h3>
-        <label for="email">Email</label>
-        <input type="email" name="email" class="box" id="email" />
-        <label for="password">Password</label>
-        <input type="password" name="password" class="box" id="password" />
-        <input type="submit" value="Login" class="btn">
-        <p>Don't have an account ? <a href="/register">Create one</a></p>
-    </form>
-</section>
+    <div class="errorContainer" *ngIf="loginForm.invalid">
+        <ng-container *ngIf="inputEmail.touched">
+          <p class="error" *ngIf="inputEmail.errors?.['required']">
+            Email is required!
+          </p>
+          <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
+            Email is not valid!
+          </p>
+        </ng-container>
+        <ng-container *ngIf="inputPassword.touched">
+          <p class="error" *ngIf="inputPassword.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+            Password must be at least
+            {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
+          </p>
+        </ng-container>
+      </div>
+    
+      <section class="forms">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <h3>Login</h3>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="box"
+            id="email"
+            ngModel
+            required
+            #inputEmail="ngModel"
+            [appEmailValidator]="appEmailDomains"
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="box"
+            id="password"
+            ngModel
+            required
+            #inputPassword="ngModel"
+            minlength="4"
+          />
+    
+          <input
+            type="submit"
+            value="Login"
+            class="btn"
+            [disabled]="loginForm.invalid"
+          />
+    
+          <p>Don't have an account ? <a routerLink="/register">Create one</a></p>
+        </form>
+      </section>
+    

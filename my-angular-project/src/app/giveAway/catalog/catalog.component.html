@@ -1,53 +1,14 @@
 <section class="container">
-    <div class="auction-item">
+    <div class="auction-item" *ngFor="let post of posts">
         <div class="info-container">
-            <img src="assets/images/pcGiveAway.jpg" alt="Some give image">
+            <img src="post.imageUrl" alt="Some give image">
             <div>
-                <h1>A Brand new PC</h1>
-                <h2>Price: 5000$</h2>
+                <h1>{{ post.title }}</h1>
+                <h2>{{ post.price }}$</h2>
             </div>
         </div>
         <div class="details-btn">
-            <a href="" class="details">Details</a>
-        </div>
-    </div>
-
-    <div class="auction-item">
-        <div class="info-container">
-            <img src="assets/images/pcGiveAway.jpg" alt="Some give image">
-            <div>
-                <h1>A Brand new PC</h1>
-                <h2>Price: 5000$</h2>
-            </div>
-        </div>
-        <div class="details-btn">
-            <a href="" class="details">Details</a>
-        </div>
-    </div>
-
-    <div class="auction-item">
-        <div class="info-container">
-            <img src="assets/images/pcGiveAway.jpg" alt="Some give image">
-            <div>
-                <h1>A Brand new PC</h1>
-                <h2>Price: 5000$</h2>
-            </div>
-        </div>
-        <div class="details-btn">
-            <a href="" class="details">Details</a>
-        </div>
-    </div>
-
-    <div class="auction-item">
-        <div class="info-container">
-            <img src="assets/images/pcGiveAway.jpg" alt="Some give image">
-            <div>
-                <h1>A Brand new PC</h1>
-                <h2>Price: 5000$</h2>
-            </div>
-        </div>
-        <div class="details-btn">
-            <a href="" class="details">Details</a>
+            <a routerLink="'/details/' + post.objectId" class="details">Details</a>
         </div>
     </div>
 </section>

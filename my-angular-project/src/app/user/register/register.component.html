@@ -1,23 +1,101 @@
-<section class="forms">
+<main>
+    <div class="errorContainer" *ngIf="form.invalid">
+      <ng-container *ngIf="form.get('username')?.touched">
+        <p *ngIf="form.get('username')?.errors?.['required']">
+          Username is required
+        </p>
+        <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+          Username must be atleast 4 characters!
+        </p>
+      </ng-container>
 
-    <form method="post">
-        <h3>Register</h3>
-        <label for="username">Username</label>
-        <input type="text" name="username" class="box" id="user" />
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p *ngIf="form.get('email')?.errors?.['required']">Email is required</p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+          Email is invalid!
+        </p>
+      </ng-container>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" class="box" id="email" />
-
-        <label for="image">Image</label>
-        <input type="text" name="image" class="box" id="image" />
-
-        <label for="password">Password</label>
-        <input type="password" name="password" class="box" id="password" />
-
-        <label for="rePass">Repeat password</label>
-        <input type="password" name="password" class="box" id="rePass" />
-
-        <input type="submit" value="Login" class="btn" />
-        <p>Don't have an account ? <a href="/register">Create one</a></p>
-    </form>
-</section>
+      <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+        <p
+          class="error"
+          *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
+        >
+          Password is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
+        >
+          Password must be at least
+          {{
+              form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']
+          }}
+          characters!
+        </p>
+      </ng-container>
+      <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+        <p
+          class="error"
+          *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
+             form.get('passGroup')?.get('rePassword')?.errors?.['required']"
+        >
+          Repeat Password does not match password!
+        </p>
+      </ng-container>
+    </div>
+    <section class="forms">
+        <form [formGroup]="form" (ngSubmit)="register()">
+          <h3>Register</h3>
+          <label for="username">Username</label>
+          <input
+            type="username"
+            name="username"
+            class="box"
+            id="username"
+            formControlName="username"
+            minlength="4"
+          />
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="box"
+            id="email"
+            formControlName="email"
+          />
+          <label for="image">Image</label>
+          <input
+            type="text"
+            name="image"
+            class="box"
+            id="image"
+            formControlName="image"
+          />
+          <ng-container formControlName="passGroup">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="box"
+              id="password"
+              formControlName="password"
+            />
+            <label for="rePass">Repeat password</label>
+            <input
+              type="password"
+              name="password"
+              class="box"
+              id="rePass"
+              formControlName="rePass"
+            />
+          </ng-container>
+          <input
+          type="submit"
+          value="Login"
+          class="btn"
+          [disabled]="form.invalid"
+        />
+        <p>Already have an account ? <a routerLink="/login">Sign in</a></p>
+      </form>
+    </section>

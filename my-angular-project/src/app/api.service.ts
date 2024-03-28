@@ -10,14 +10,22 @@ export class ApiService {
   private appUrl = environment.appUrl;
   private headers = new HttpHeaders({
     'X-Parse-Application-Id': environment.appId,
-    'X-Parse-JavaScript-Key': environment.javascriptKey
+    'X-Parse-JavaScript-Key': environment.javascriptKey,
+    'Content-Type': 'application/json'
   });
 
   constructor(private http: HttpClient) { }
-// !
   getCatalog() {
-    const request = this.http.get<giveAway[]>(`${this.appUrl}/GiveAway`, { headers: this.headers })
+    const request = this.http.get<giveAway[]>(`${this.appUrl}/classes/BidItems`, { headers: this.headers })
     return request;
   }
-  // !
+  createGiveAway(data: giveAway) {
+    const request = this.http.post(`${this.appUrl}/classes/BidItems`, data, { headers: this.headers });
+    return request;
+  }
+
+  getSpecificItem(id: string) {
+    const request = this.http.get<giveAway>(`${this.appUrl}/classes/BidItems/${id}`, { headers: this.headers });
+    return request;
+  }
 }

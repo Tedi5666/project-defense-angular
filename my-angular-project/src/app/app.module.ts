@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
-import { CatalogComponent } from './giveAway/catalog/catalog.component';
-// !
+import { GivesModule } from './giveAway/gives.module';
+import { UserModule } from './user/user/user.module';
 import { EditComponent } from './giveAway/edit/edit.component';
 import { DetailsComponent } from './giveAway/details/details.component';
 
@@ -14,16 +15,14 @@ import { DetailsComponent } from './giveAway/details/details.component';
   declarations: [
     AppComponent,
     MainComponent,
-    CatalogComponent
   ],
-// !
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    CatalogComponent,
-    EditComponent,
-    DetailsComponent
+    GivesModule,
+    UserModule,
+    HttpClientModule,
   ],
   providers: [],
 
