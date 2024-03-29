@@ -1,8 +1,8 @@
 <main>
     <div class="errorContainer" *ngIf="form.invalid">
       <ng-container *ngIf="form.get('username')?.touched">
-        <p *ngIf="form.get('username')?.errors?.['required']">
-          Username is required
+        <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+          Username is required!
         </p>
         <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
           Username must be atleast 4 characters!
@@ -10,7 +10,7 @@
       </ng-container>
 
       <ng-container *ngIf="form.get('email')?.touched">
-        <p *ngIf="form.get('email')?.errors?.['required']">Email is required</p>
+        <p *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
         <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
           Email is invalid!
         </p>
@@ -27,20 +27,27 @@
           class="error"
           *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
         >
-          Password must be at least
+          Password must be at least!
           {{
               form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']
           }}
           characters!
         </p>
       </ng-container>
-      <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+      <ng-container *ngIf="form.get('passGroup')?.get('rePass')?.touched">
         <p
           class="error"
-          *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
-             form.get('passGroup')?.get('rePassword')?.errors?.['required']"
-        >
+          *ngIf="form.get('passGroup')?.errors?.['matchPassValidator']"
+          >
           Repeat Password does not match password!
+        </p>
+      </ng-container>
+      <ng-container *ngIf="form.get('image')?.touched">
+        <p class="error" *ngIf="form.get('image')?.errors?.['appImageValidator']">
+          Image is not valid!
+        </p>
+        <p class="error" *ngIf="form.get('image')?.errors?.['required']">
+          Image is required!
         </p>
       </ng-container>
     </div>
@@ -72,7 +79,7 @@
             id="image"
             formControlName="image"
           />
-          <ng-container formControlName="passGroup">
+          <ng-container formGroupName="passGroup">
             <label for="password">Password</label>
             <input
               type="password"
@@ -84,7 +91,7 @@
             <label for="rePass">Repeat password</label>
             <input
               type="password"
-              name="password"
+              name="rePass"
               class="box"
               id="rePass"
               formControlName="rePass"

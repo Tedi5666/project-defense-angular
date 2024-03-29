@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
 import { GivesModule } from './giveAway/gives.module';
 import { UserModule } from './user/user/user.module';
+import { appInterceptorProvider } from './api.interceptor';
 import { EditComponent } from './giveAway/edit/edit.component';
 import { DetailsComponent } from './giveAway/details/details.component';
 
@@ -24,7 +25,7 @@ import { DetailsComponent } from './giveAway/details/details.component';
     UserModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
 
   bootstrap: [AppComponent]
 })

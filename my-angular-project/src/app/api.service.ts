@@ -16,16 +16,21 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   getCatalog() {
-    const request = this.http.get<giveAway[]>(`${this.appUrl}/classes/BidItems`, { headers: this.headers })
+    const request = this.http.get<giveAway[]>(`${this.appUrl}/giveAway`, { headers: this.headers })
     return request;
   }
   createGiveAway(data: giveAway) {
-    const request = this.http.post(`${this.appUrl}/classes/BidItems`, data, { headers: this.headers });
+    const request = this.http.post(`${this.appUrl}/giveAway`, data, { headers: this.headers });
     return request;
   }
 
   getSpecificItem(id: string) {
-    const request = this.http.get<giveAway>(`${this.appUrl}/classes/BidItems/${id}`, { headers: this.headers });
+    const request = this.http.get<giveAway>(`${this.appUrl}/giveAway/${id}`, { headers: this.headers });
+    return request;
+  }
+  
+  updateBidItem(id: string, data: giveAway) {
+    const request = this.http.put<giveAway>(`${this.appUrl}/giveAway/${id}`, data, { headers: this.headers });
     return request;
   }
 }
