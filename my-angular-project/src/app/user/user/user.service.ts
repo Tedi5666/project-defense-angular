@@ -36,19 +36,19 @@ export class UserService {
 
   getUserProfile(id: string) {
     return this.http
-    .get<User>(`${this.appUrl}/users/${id}`, {
-      headers: this.headers,
-    })
-}
+      .get<User>(`${this.appUrl}/users/${id}`, {
+        headers: this.headers,
+      })
+  }
 
-createGiveUser(id: string | undefined, data: { posts: string[] | undefined }, sessionToken: string | undefined ) {
-  this.headers = this.headers.set('X-Parse-Session-Token', sessionToken || '');
+  createGiveUser(id: string | undefined, data: { posts: string[] | undefined }, sessionToken: string | undefined) {
+    this.headers = this.headers.set('X-Parse-Session-Token', sessionToken || '');
 
-  return this.http
-    .put<User>(`${this.appUrl}/users/${id}`, data, {
-      headers: this.headers,
-    })
-    .pipe(tap((user) => this.user$$.next(user)));
+    return this.http
+      .put<User>(`${this.appUrl}/users/${id}`, data, {
+        headers: this.headers,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   register(username: string, email: string, image: string, password: string) {
@@ -61,13 +61,13 @@ createGiveUser(id: string | undefined, data: { posts: string[] | undefined }, se
     };
 
     return this.http
-    .post<User>(`${this.appUrl}/users`, data, {
-      headers: this.headers,
-    })
-    .pipe(tap((user) => {
-      this.user$$.next(user);
-      this.setSessionToken(user.sessionToken);
-    }));
+      .post<User>(`${this.appUrl}/users`, data, {
+        headers: this.headers,
+      })
+      .pipe(tap((user) => {
+        this.user$$.next(user);
+        this.setSessionToken(user.sessionToken);
+      }));
   }
 
   login(username: string, password: string) {

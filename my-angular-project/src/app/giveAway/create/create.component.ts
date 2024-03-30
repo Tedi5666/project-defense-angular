@@ -35,7 +35,7 @@ export class CreateComponent {
       author: {
         __type: 'Pointer',
         className: '_User',
-        objectId: 'user?.objectId',
+        objectId: user?.objectId,
       },
       signed: [],
     };

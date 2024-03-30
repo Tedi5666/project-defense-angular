@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { giveAway } from '../../types/GiveAway';
 import { User } from '../../types/User';
@@ -19,7 +19,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -61,4 +62,7 @@ export class DetailsComponent implements OnInit {
       });
     }
   }
+  deleteGiveaway(id: string | undefined): void {
+    this.apiService.deleteGiveaway(id).subscribe(() => this.router.navigate(['/catalog']));
+  } 
 }

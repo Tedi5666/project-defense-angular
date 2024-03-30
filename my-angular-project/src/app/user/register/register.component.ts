@@ -38,7 +38,7 @@ export class RegisterComponent {
     this.userServise.register(username!, email!, image!, passGroup?.password!).subscribe({
       next: (res) => {
         console.log(res)
-        this.router.navigate(['/login'])
+        this.router.navigate(['/catalog'])
       },
       error: (err) => {
         console.log(err)
