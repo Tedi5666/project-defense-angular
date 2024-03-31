@@ -1,19 +1,82 @@
+<div class="errorContainer" *ngIf="createForm.invalid">
+    <ng-container *ngIf="inputTitle.touched">
+      <p class="error" *ngIf="inputTitle.errors?.['required']">
+        Title is required!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputDescr.touched">
+      <p class="error" *ngIf="inputDescr.errors?.['required']">
+        Description is required!
+      </p>
+
+      <p class="error" *ngIf="inputDescr.errors?.['maxlength']">
+        Description can't excede 30 symbols!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputPrice.touched">
+      <p class="error" *ngIf="inputPrice.errors?.['required']">
+        Price is required!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputImage.touched">
+      <p class="error" *ngIf="inputImage.errors?.['appImageValidator']">
+        Image is not valid!
+      </p>
+      <p class="error" *ngIf="inputImage.errors?.['required']">
+        Image is required!
+      </p>
+    </ng-container>
+  </div>
+
 <section class="forms">
 
     <form #createForm="ngForm" (ngSubmit)="submitHandler()">
         <h3>Create</h3>
 
         <label for="title">Title</label>
-        <input type="text" name="title" class="box" ngModel #inputTitle="ngModel" required/>
+       <input
+        type="text"
+        name="title"
+        class="box"
+        ngModel
+        required
+        #inputTitle="ngModel"
+      />
 
         <label for="description">Description</label>
-        <input type="text" name="description" class="box" ngModel #inputDescription="ngModel" required/>
+        <input
+        type="text"
+        name="description"
+        class="box"
+        ngModel
+        required
+        #inputDescr="ngModel"
+        maxlength="30"
+      />
 
         <label for="price">Price</label>
-        <input type="number" name="price" class="box" ngModel #inputPrice="ngModel" required/>
+        <input
+        type="number"
+        name="price"
+        class="box"
+        ngModel
+        required
+        #inputPrice="ngModel"
+      />
 
         <label for="imageUrl">Image</label>
-        <input type="text" name="imageUrl" class="box" ngModel #inputImage="ngModel" required/>
+        <input
+        type="text"
+        name="imageUrl"
+        class="box"
+        ngModel
+        required
+        [appImageValidator]="appImageValidator"
+        #inputImage="ngModel"
+      />
 
         <input type="submit" class="btn" value="Create" ngModel required=""/>
     </form>

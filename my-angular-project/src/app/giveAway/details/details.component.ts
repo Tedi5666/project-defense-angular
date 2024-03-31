@@ -12,6 +12,7 @@ import { UserService } from '../../user/user/user.service';
 })
 export class DetailsComponent implements OnInit {
   owner: boolean = false;
+  try: boolean = false
   selectedItem: giveAway | null = null;
   username: string | null = null;
   lastBidder: string = '';
@@ -29,14 +30,15 @@ export class DetailsComponent implements OnInit {
       this.apiService.getSpecificItem(id).subscribe({
         next: (res) => {
           this.selectedItem = res;
-
+          
           this.userService.getUserProfile(res.author['objectId']).subscribe({
             next: (userRef) => {
               this.username = userRef.username;
+              this.try = userRef.objectId == this.userService.user?.objectId;
 
               if (this.userService.user) {
-                const currentUser: User = this.userService.user;
-                this.owner = currentUser.posts.find(id => id === res.objectId) ? true : false;
+                this.owner = userRef.objectId == this.userService.user.objectId ? true : false;
+                // this.owner = currentUser.posts.find(id => id === res.objectId) ? true : false;
               }
 
               if (res.signed.length > 0) {

@@ -1,3 +1,36 @@
+<div class="errorContainer" *ngIf="editForm.invalid">
+    <ng-container *ngIf="inputTitle.touched">
+      <p class="error" *ngIf="inputTitle.errors?.['required']">
+        Title is required!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputDescr.touched">
+      <p class="error" *ngIf="inputDescr.errors?.['required']">
+        Description is required!
+      </p>
+
+      <p class="error" *ngIf="inputDescr.errors?.['maxlength']">
+        Description can't excede 40 symbols!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputPrice.touched">
+      <p class="error" *ngIf="inputPrice.errors?.['required']">
+        Price is required!
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="inputImage.touched">
+      <p class="error" *ngIf="inputImage.errors?.['appImageValidator']">
+        Image is not valid!
+      </p>
+      <p class="error" *ngIf="inputImage.errors?.['required']">
+        Image is required!
+      </p>
+    </ng-container>
+  </div>
+
 <section class="forms">
 
     <form #editForm="ngForm" (ngSubmit)="edit(editForm)">
@@ -7,14 +40,33 @@
         <input type="text" name="title" class="box" [ngModel]="formData?.title"/>
 
         <label for="description">Description</label>
-        <input type="text" name="description" class="box" [ngModel]="formData?.description"/>
+        <input
+        type="text"
+        name="description"
+        class="box"
+        [ngModel]="formData?.description"
+        #inputTitle="ngModel"
+        #inputDescr="ngModel"
+      />
 
         <label for="price">Price</label>
-        <input type="number" name="price" class="box" [ngModel]="formData?.price"/>
+        <input
+        type="number"
+        name="price"
+        class="box"
+        [ngModel]="formData?.price"
+        #inputPrice="ngModel"
+      />
 
         <label for="imageUrl">Image</label>
-        <input type="text" name="imageUrl" class="box" [ngModel]="formData?.imageUrl"/>
-
+        <input
+        type="text"
+        name="imageUrl"
+        class="box"
+        [ngModel]="formData?.imageUrl"
+        [appImageValidator]="appImageValidator"
+        #inputImage="ngModel"
+      />
         <input type="submit" class="btn" value="Create" />
     </form>
 </section>

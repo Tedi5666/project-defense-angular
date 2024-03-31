@@ -20,10 +20,10 @@ import { DetailsComponent } from './giveAway/details/details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     GivesModule,
     UserModule,
-    HttpClientModule,
   ],
   providers: [appInterceptorProvider],
 

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { giveAway } from '../../types/GiveAway';
+import { DEFAULT_IMAGE_DOMAINS } from '../../shared/constant';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -10,7 +11,7 @@ import { giveAway } from '../../types/GiveAway';
 })
 export class EditComponent implements OnInit {
   formData: giveAway | null = null;
-  defaultType: string = 'sell';
+  appImageValidator = DEFAULT_IMAGE_DOMAINS;
   id: string | null = '';
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}

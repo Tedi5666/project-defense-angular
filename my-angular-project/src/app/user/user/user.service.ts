@@ -91,6 +91,7 @@ export class UserService {
   }
 
   logout() {
+    this.headers = this.headers.set('X-Parse-Session-Token', this.sessionToken || '');
     return this.http
       .post(
         `${this.appUrl}/logout`,

@@ -7,7 +7,7 @@ import { GivesRoutingModule } from './gives.routing.module';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-// import { appImageValidator } from '../shared/validators/app-image-validator';
+import { appImageValidator } from '../shared/validators/app-image.validator';
 
 
 @NgModule({

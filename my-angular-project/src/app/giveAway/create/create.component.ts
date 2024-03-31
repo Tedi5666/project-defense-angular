@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user/user.service';
+import { DEFAULT_IMAGE_DOMAINS } from '../../shared/constant';
 
 @Component({
   selector: 'app-create',
@@ -10,6 +11,7 @@ import { UserService } from '../../user/user/user.service';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent {
+  appImageValidator = DEFAULT_IMAGE_DOMAINS;
   @ViewChild('createForm') createForm: NgForm | undefined;
 
   constructor(
