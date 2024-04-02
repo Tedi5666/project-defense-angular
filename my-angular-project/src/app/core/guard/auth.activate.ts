@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from '../../user/user/user.service';
+import { UserService } from '../../user/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {

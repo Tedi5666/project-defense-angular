@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DEFAULT_EMAIL_DOMAINS } from '../../shared/constant';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../../core/error/error.service';
 @Component({

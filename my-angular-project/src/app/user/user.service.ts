@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.developments';
-import { User } from '../../types/User';
+import { environment } from '../../environments/environment.developments';
+import { User } from '../types/User';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
@@ -48,7 +48,6 @@ export class UserService {
       .put<User>(`${this.appUrl}/users/${id}`, data, {
         headers: this.headers,
       })
-      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   register(username: string, email: string, image: string, password: string) {
@@ -89,7 +88,6 @@ export class UserService {
   }
 
   logout() {
-    this.headers = this.headers.set('X-Parse-Session-Token', this.sessionToken || '');
     return this.http
       .post(
         `${this.appUrl}/logout`,

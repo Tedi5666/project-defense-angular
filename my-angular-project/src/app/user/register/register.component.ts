@@ -4,7 +4,7 @@ import { DEFAULT_EMAIL_DOMAINS, DEFAULT_IMAGE_DOMAINS } from '../../shared/const
 import { appImageValidator } from '../../shared/validators/app-image.validator';
 import { appEmailValidator } from '../../shared/validators/app-email-validators';
 import { matchPassValidator } from '../../shared/validators/match-password-validator';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',

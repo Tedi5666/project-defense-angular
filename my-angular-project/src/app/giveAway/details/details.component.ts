@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { giveAway } from '../../types/GiveAway';
 import { User } from '../../types/User';
-import { UserService } from '../../user/user/user.service';
-
+import { UserService } from '../../user/user.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -12,7 +12,6 @@ import { UserService } from '../../user/user/user.service';
 })
 export class DetailsComponent implements OnInit {
   owner: boolean = false;
-  try: boolean = false
   selectedItem: giveAway | null = null;
   username: string | null = null;
   currentUser: User | null = null;
@@ -35,13 +34,12 @@ export class DetailsComponent implements OnInit {
           this.userService.getUserProfile(res.author['objectId']).subscribe({
             next: (userRef) => {
               this.username = userRef.username;
-              this.try = userRef.objectId == this.userService.user?.objectId;
 
               if (this.userService.user) {
-                this.owner = res.author.objectId === userRef.objectId ? true : false;
+                this.owner = res.author.objectId === this.userService.user.objectId ? true : false;
+                console.log(res, userRef)
                 this.hasSigned = this.selectedItem?.signed.find(id => id === this.currentUser?.objectId) ? true : false;
               }
-
             },
             error: (err) => {
               console.log(err);

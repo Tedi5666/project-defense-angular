@@ -9,7 +9,7 @@ import { Injectable, Provider } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError } from 'rxjs';
 import { environment } from '../environments/environment.developments';
-import { UserService } from './user/user/user.service';
+import { UserService } from './user/user.service';
 import { ErrorService } from './core/error/error.service';
 
 const { appUrl } = environment;

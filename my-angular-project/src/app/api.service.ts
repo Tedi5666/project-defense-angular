@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.developments';
 import { giveAway } from './types/GiveAway';
-import { UserService } from './user/user/user.service';
+import { UserService } from './user/user.service';
 import { switchMap, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -32,24 +32,37 @@ export class ApiService {
     return request;
   }
   
-  updateGiveItem(id: string, data: giveAway) {
-    const request = this.http.put<giveAway>(`${this.appUrl}/classes/giveAway/${id}`, data, { headers: this.headers });
+  editGiveItem(id: string | undefined, data: giveAway | null) {
+    const request = this.http.put(
+      `${this.appUrl}/classes/giveAway/${id}`,
+      data,
+      { headers: this.headers }
+    );
+    return request;
+  }
+
+  updateGiveItem(
+    id: string | undefined,
+    data: { bids: string[] | undefined; price: number | undefined }
+  ) {
+    const request = this.http.put(
+      `${this.appUrl}/classes/giveAway/${id}`,
+      data,
+      { headers: this.headers }
+    );
     return request;
   }
 
   deleteGiveaway(id: string | undefined){
-    let userId: string | undefined; // Store the user ID
-    let objectId: string; // Store the object ID
+    let userId: string | undefined;
+    let objectId: string;
 
-    // Fetch the giveaway item and store its details
     return this.getSpecificItem(id).pipe(
       tap((item) => {
         userId = item.author.objectId;
         objectId = item.objectId;
       }),
-      // Fetch the user details
       switchMap(() => this.userService.getUserProfile(userId)),
-      // Remove the giveaway item ID from the user's posts array
       tap((user) => {
         if (user && user.posts) {
           const index = user.posts.indexOf(objectId);
@@ -59,9 +72,7 @@ export class ApiService {
           }
         }
       }),
-      // Update the user
       switchMap((user) => this.userService.updateUser(user.objectId, { posts: user.posts }, user?.sessionToken)),
-      // Delete the giveaway item
       switchMap(() => this.http.delete(`${this.appUrl}/classes/giveAway/${id}`, {
         headers: this.headers,
       }))
