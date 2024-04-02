@@ -38,8 +38,7 @@ export class DetailsComponent implements OnInit {
               this.try = userRef.objectId == this.userService.user?.objectId;
 
               if (this.userService.user) {
-                this.currentUser = this.userService.user;
-                this.owner = res.author.objectId === this.currentUser.objectId ? true : false;
+                this.owner = res.author.objectId === userRef.objectId ? true : false;
                 this.hasSigned = this.selectedItem?.signed.find(id => id === this.currentUser?.objectId) ? true : false;
               }
 

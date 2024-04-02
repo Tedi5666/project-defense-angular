@@ -48,7 +48,7 @@ export class CreateComponent {
         user?.posts.push(res.objectId);
         const posts = { posts: user?.posts };
         this.userService
-          .createGiveUser(user?.objectId, posts, user?.sessionToken)
+        .updateUser(user?.objectId, posts, user?.sessionToken)
           .subscribe(() => this.router.navigate(['/catalog']));
       },
       error: (err) => {

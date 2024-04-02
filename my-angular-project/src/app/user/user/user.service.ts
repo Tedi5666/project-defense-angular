@@ -34,15 +34,15 @@ export class UserService {
     });
   }
 
-  getUserProfile(id: string) {
+  getUserProfile(id: string | undefined) {
     return this.http
       .get<User>(`${this.appUrl}/users/${id}`, {
         headers: this.headers,
       })
   }
 
-  createGiveUser(id: string | undefined, data: { posts: string[] | undefined }, sessionToken: string | undefined) {
-    this.headers = this.headers.set('X-Parse-Session-Token', sessionToken || '');
+  updateUser(id: string | undefined, data: { posts: string[] | undefined }, sessionToken: string | undefined) {
+    this.headers = this.headers.set('X-Parse-Session-Token', this.getSessionToken() || '');
 
     return this.http
       .put<User>(`${this.appUrl}/users/${id}`, data, {
@@ -75,7 +75,7 @@ export class UserService {
       username
     )}&password=${encodeURIComponent(password)}`;
 
-    const request = this.http
+    return this.http
       .get<User>(url, {
         headers: this.headers,
       })
@@ -86,8 +86,6 @@ export class UserService {
         })
       );
 
-    // this.setSessionToken(this.user$$._value.sessionToken);
-    return request;
   }
 
   logout() {
@@ -95,15 +93,18 @@ export class UserService {
     return this.http
       .post(
         `${this.appUrl}/logout`,
-        {},
+        JSON.stringify({}),
         {
           headers: this.headers,
         }
       )
-      .pipe(tap(() => this.user$$.next(undefined)));
+      .pipe(tap(() => {
+        this.user$$.next(undefined);
+        this.setSessionToken(null);
+      }));
   }
 
-  setSessionToken(token: string) {
+  setSessionToken(token: string | null) {
     this.sessionToken = token;
   }
 
