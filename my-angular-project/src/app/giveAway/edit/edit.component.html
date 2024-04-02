@@ -11,7 +11,7 @@
       </p>
 
       <p class="error" *ngIf="inputDescr.errors?.['maxlength']">
-        Description can't excede 40 symbols!
+        Description can't excede 30 symbols!
       </p>
     </ng-container>
 
@@ -47,6 +47,7 @@
         [ngModel]="formData?.description"
         #inputTitle="ngModel"
         #inputDescr="ngModel"
+        maxlength="30"
       />
 
         <label for="price">Price</label>
@@ -67,6 +68,6 @@
         [appImageValidator]="appImageValidator"
         #inputImage="ngModel"
       />
-        <input type="submit" class="btn" value="Create" />
+        <input type="submit" class="btn" value="Edit" />
     </form>
 </section>

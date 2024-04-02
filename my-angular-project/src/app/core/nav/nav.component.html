@@ -1,17 +1,17 @@
 <nav>
         <a routerLink="/home"><img src="assets/images/HomeImage.png" alt="Give-system" /></a>
         <ul>
-            <li><a routerLink="/home">Home</a></li>
-            <li><a routerLink="/catalog">Catalog</a></li>
-            
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/catalog" routerLinkActive="active">Catalog</a></li>
+
                         <ng-container *ngIf="!isLoggedIn"> 
-                            <li><a routerLink="/login">Login</a></li>
-                            <li><a routerLink="/register">Register</a></li>
+                           <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+                           <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
                         </ng-container>
 
             <ng-container *ngIf="isLoggedIn"> 
-                <li><a routerLink="/create">Create</a></li>
-                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/create" routerLinkActive="active">Create</a></li>
+                <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
                 <li><a routerLink="#" (click)="logout()" appNavActive>Logout</a></li>
             </ng-container>
 

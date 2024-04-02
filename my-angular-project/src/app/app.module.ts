@@ -11,6 +11,7 @@ import { UserModule } from './user/user/user.module';
 import { appInterceptorProvider } from './api.interceptor';
 import { EditComponent } from './giveAway/edit/edit.component';
 import { DetailsComponent } from './giveAway/details/details.component';
+import { ErrorComponent } from './core/error/error.component';
 
 @NgModule({
   declarations: [

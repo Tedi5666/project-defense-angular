@@ -15,7 +15,8 @@ export class DetailsComponent implements OnInit {
   try: boolean = false
   selectedItem: giveAway | null = null;
   username: string | null = null;
-  lastBidder: string = '';
+  currentUser: User | null = null;
+  hasSigned: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,21 +38,11 @@ export class DetailsComponent implements OnInit {
               this.try = userRef.objectId == this.userService.user?.objectId;
 
               if (this.userService.user) {
-                this.owner = userRef.objectId == this.userService.user.objectId ? true : false;
-                // this.owner = currentUser.posts.find(id => id === res.objectId) ? true : false;
+                this.currentUser = this.userService.user;
+                this.owner = res.author.objectId === this.currentUser.objectId ? true : false;
+                this.hasSigned = this.selectedItem?.signed.find(id => id === this.currentUser?.objectId) ? true : false;
               }
 
-              if (res.signed.length > 0) {
-                const lastBidUserId = res.signed[res.signed.length - 1];
-                this.userService.getUserProfile(lastBidUserId).subscribe({
-                  next: (lastBidUser) => {
-                    this.lastBidder = lastBidUser.username;
-                  },
-                  error: (err) => {
-                    console.log(err);
-                  },
-                });
-              }
             },
             error: (err) => {
               console.log(err);

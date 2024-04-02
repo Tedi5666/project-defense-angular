@@ -4,7 +4,7 @@ import { EditComponent } from './edit/edit.component';
 import { DetailsComponent } from './details/details.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CreateComponent } from './create/create.component';
-// import { AuthActivate } from '../core/guard/auth.activate';
+import { AuthActivate } from '../core/guard/auth.activate';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditComponent,
-    // canActivate: [AuthActivate]
+    canActivate: [AuthActivate]
   },
   {
     path: 'details/:id',
@@ -23,12 +23,12 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent,
-    // canActivate: [AuthActivate]
+    canActivate: [AuthActivate]
   },
   {
     path: 'delete/:id',
     component: CatalogComponent,
-    // canActivate: [AuthActivate]
+    canActivate: [AuthActivate]
   }
 ];
 

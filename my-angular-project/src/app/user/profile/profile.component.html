@@ -1,33 +1,28 @@
 <section>
     <div class="data">
         <div class="profile-img">
-            <img src="assets/images/person.png" alt="Blank profile">
+            <img [src]="profile?.imageUrl" alt="Blank profile" />
         </div>
-
+        
         <div class="personal-data">
-            <p>Name: Teodor Firkov</p>
-            <p>Email: tf2&#64;gmail.com</p>
-            <p>3 posts</p>
+            <p>Username: {{ profile?.username }}</p>
+            <p>Email: {{ profile?.email }}</p>
+            <p>{{ profile?.posts?.length || 0 }} posts</p>
         </div>
     </div>
-
-    <div class="auction-images">
-        <div class="photo">
-            <a href="./details.html">
-                <img src="assets/images/pcGiveAway.jpg" alt="PC">
+    <ng-container *ngIf="profile?.posts?.length">
+        <div class="auction-images" *ngFor="let post of creations">
+          <div class="photo">
+            <a [routerLink]="'/details/' + post.objectId">
+              <img [src]="post.imageUrl" alt="Truck" />
             </a>
-        </div>
-
-            <div class="photo">
-                <a href="./details.html">
-                    <img src="assets/images/pcGiveAway.jpg" alt="PC">
-                </a>
-            </div>
-
-                <div class="photo">
-                    <a href="./details.html">
-                        <img src="assets/images/pcGiveAway.jpg" alt="PC">
-                    </a>
-                </div>
+          </div>
     </div>
+    </ng-container>
+
+    <ng-container *ngIf="!profile?.posts?.length">
+      <div class="auction-images">
+    <p className="noposts">You have no posts yet! Try and create some here => <a routerLink="/create">Create</a>
+    </div>
+</ng-container>
 </section>
