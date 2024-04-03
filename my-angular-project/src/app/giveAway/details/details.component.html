@@ -5,7 +5,7 @@
             <h2>Title: {{ selectedItem?.title}}</h2>
             <h3>Author: {{username}}</h3>
             <h3>Price: {{ selectedItem?.price}}</h3>
-            <h3>Signed up: {{ selectedItem?.signed?.length || 0 }}</h3>
+            <!-- <h3>Signed up: {{ selectedItem?.signed?.length || 0 }}</h3> -->
             <h3>Description: {{ selectedItem?.description}}</h3>
 
             <div class="buttons">
@@ -13,10 +13,10 @@
                     <a [routerLink]="'/edit/' + selectedItem?.objectId"  class="btn-edit">Edit</a>
                     <a routerLink="#" (click)="deleteGiveaway(selectedItem?.objectId)" class="btn-delete">Delete</a>
                 </ng-container>
-                <ng-container *ngIf="!owner && currentUser">
+                <!-- <ng-container *ngIf="!owner">                    
                     <a routerLink="#" class="btn-wish" *ngIf="!hasSigned">Wish to sign</a>
                     <p class="wish-pub" *ngIf="hasSigned">You have already signed up to this item</p>
-                </ng-container>
+                </ng-container> -->
               </div>
         </article>
 
